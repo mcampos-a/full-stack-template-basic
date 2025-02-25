@@ -26,7 +26,8 @@ app.use(express.static('public'))
 app.use(express.urlencoded({extended:true}))
 //this allows express to parse json and read it.
 app.use(express.json())
-
+//It allows for us to bipass cors errors
+app.use(cors())
 
 //this set up a port to listen for the server
 //PORT = 8000
