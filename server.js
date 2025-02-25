@@ -16,6 +16,18 @@ MongoClient.connect(dbConnecitonString)
         db = client.db(dbName)
         collection = db.collection('template-collection')
     })
+
+//middleware will go before any of the HTTP methods
+
+app.set('view engine', 'ejs')
+//this lets express know to look into the public folder to serve up client side CSS/JS
+app.use(express.static('public'))
+//helps us parse/handle urls that are going to be passed around
+app.use(express.urlencoded({extended:true}))
+//this allows express to parse json and read it.
+app.use(express.json())
+
+
 //this set up a port to listen for the server
 //PORT = 8000
 app.listen(process.env.PORT || PORT, ()=>{
