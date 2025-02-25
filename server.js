@@ -29,6 +29,16 @@ app.use(express.json())
 //It allows for us to bipass cors errors
 app.use(cors())
 
+
+app.get('/', async (request, response)=>{
+    //It will try something and if it cant do it it will respond with an error
+    try {
+        response.render('index.ejs')
+    } catch (error) {
+        response.status(500).send({message: error.message})
+    }
+})
+
 //this set up a port to listen for the server
 //PORT = 8000
 app.listen(process.env.PORT || PORT, ()=>{
